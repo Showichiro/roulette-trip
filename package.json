@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "rm": "rm -rf docs",
     "mv": "mv dist docs",
-    "git": "git add . && git commit && git push origin master",
+    "git": "git add . && git commit -m 'deploy' && git push origin master",
     "deploy": "yarn rm && yarn build && yarn mv && yarn git"
   },
   "dependencies": {
