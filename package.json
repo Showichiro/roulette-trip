@@ -1,12 +1,17 @@
 {
   "name": "roulette-trip",
+  "homepage": "https://Showichiro.github.io/roulette-trip",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "rm": "rm -rf docs",
+    "mv": "mv dist docs",
+    "git": "git add . && git commit && git push origin master",
+    "deploy": "yarn rm && yarn build && yarn mv && yarn git"
   },
   "dependencies": {
     "bootstrap": "^5.2.0",
