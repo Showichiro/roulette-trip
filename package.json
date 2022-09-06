@@ -7,11 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "rm": "rm -rf docs",
-    "mv": "mv dist docs",
-    "git": "git add . && git commit -m 'deploy' && git push origin master",
-    "deploy": "yarn rm && yarn build && yarn mv && yarn git"
+    "preview": "vite preview"
   },
   "dependencies": {
     "bootstrap": "^5.2.0",
