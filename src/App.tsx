@@ -83,7 +83,7 @@ function App() {
       </Form>
       {/* ルーレット */}
       {data.length > 0 && (
-        <Form.Group>
+        <Form.Group className="overflow-hidden">
           <Wheel
             data={data}
             mustStartSpinning={start}
