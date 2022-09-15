@@ -2,10 +2,7 @@ import { useCallback, useState } from "react";
 import { Button, ButtonGroup, Container, Form, Modal } from "react-bootstrap";
 import { Wheel } from "react-custom-roulette";
 import { WheelData } from "react-custom-roulette/dist/components/Wheel/types";
-import {
-  TwitterShareButton,
-  TwitterIcon,
-} from "react-share";
+import { TwitterShareButton, TwitterIcon } from "react-share";
 /**
  * 配列をシャッフルして返却する関数
  * @param array
@@ -64,7 +61,7 @@ function App() {
   const handleClose = useCallback(() => setShow(false), []);
   const handleStopSpinning = useCallback(() => setShow(true), []);
   const shareUrl = window.location.href;
-  const message = `次に向かうのは「${data[prize].option}」`;
+  const message = `次に向かうのは「${data.at(prize)?.option}」`;
   return (
     <Container>
       {/* タイトル */}
