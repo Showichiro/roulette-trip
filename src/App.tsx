@@ -1,8 +1,11 @@
 import { useCallback, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, ButtonGroup, Container, Form, Modal } from "react-bootstrap";
 import { Wheel } from "react-custom-roulette";
 import { WheelData } from "react-custom-roulette/dist/components/Wheel/types";
-
+import {
+  TwitterShareButton,
+  TwitterIcon,
+} from "react-share";
 /**
  * 配列をシャッフルして返却する関数
  * @param array
@@ -56,6 +59,12 @@ function App() {
     setPrize(Math.floor(Math.random() * data.length));
   }, [data]);
 
+  // モーダル関連
+  const [show, setShow] = useState(false);
+  const handleClose = useCallback(() => setShow(false), []);
+  const handleStopSpinning = useCallback(() => setShow(true), []);
+  const shareUrl = window.location.href;
+  const message = `次に向かうのは「${data[prize].option}」`;
   return (
     <Container>
       {/* タイトル */}
@@ -95,10 +104,29 @@ function App() {
               "#ffdab9",
               "#dcdcdc",
             ]}
+            onStopSpinning={handleStopSpinning}
           />
           <Button onClick={handleClickSpin}>SPIN</Button>
         </Form.Group>
       )}
+      {/* 結果を表示するモーダル */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <p className="mb-0">{message}</p>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p className="mb-0">行き先をシェアしよう!</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <ButtonGroup>
+            <TwitterShareButton url={shareUrl} title={message}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+          </ButtonGroup>
+        </Modal.Footer>
+      </Modal>
       <footer className="mt-3">
         <a
           target="_blank"
